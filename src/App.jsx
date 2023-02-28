@@ -1,7 +1,16 @@
+import { Typography } from '@mui/material'
+
 const App = () => {
 	return (
 		<>
-			<h1 style={{ textAlign: 'center' }}>Bajón App</h1>
+			<Typography
+				variant='h1'
+				textAlign='center'
+				mt='3rem'
+				fontSize='custom.18'
+				color='custom.white'>
+				Bajón App
+			</Typography>
 		</>
 	)
 }
