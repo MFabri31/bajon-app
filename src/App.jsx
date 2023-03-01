@@ -1,16 +1,12 @@
-import { Typography } from '@mui/material'
+import { Container } from '@mui/material'
+import SearchForm from './components/SearchForm/SearchForm'
 
 const App = () => {
 	return (
 		<>
-			<Typography
-				variant='h1'
-				textAlign='center'
-				mt='3rem'
-				fontSize='custom.18'
-				color='custom.white'>
-				Bajón App
-			</Typography>
+			<Container maxWidth='sm'>
+				<SearchForm />
+			</Container>
 		</>
 	)
 }
