@@ -1,4 +1,5 @@
 import { Container } from '@mui/material'
+import Categories from './components/Categories'
 import SearchForm from './components/SearchForm/SearchForm'
 
 const App = () => {
@@ -6,6 +7,7 @@ const App = () => {
 		<>
 			<Container maxWidth='sm'>
 				<SearchForm />
+				<Categories />
 			</Container>
 		</>
 	)
