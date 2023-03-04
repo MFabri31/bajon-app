@@ -1,6 +1,7 @@
 import { Container } from '@mui/material'
 import Categories from './components/Categories'
 import ListProduct from './components/ListProduct'
+import NavBar from './components/NavBar'
 import SearchForm from './components/SearchForm'
 
 const App = () => {
@@ -10,6 +11,7 @@ const App = () => {
 				<SearchForm />
 				<Categories />
 				<ListProduct />
+				<NavBar />
 			</Container>
 		</>
 	)
