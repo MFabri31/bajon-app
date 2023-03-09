@@ -1,3 +1,4 @@
+import { Box } from '@mui/material'
 import { Outlet } from 'react-router-dom'
 import Categories from '../Categories'
 import Header from '../Header/Header'
@@ -8,7 +9,9 @@ const Layout = () => {
 		<>
 			<Header />
 			<Categories />
-			<Outlet />
+			<Box component='main' paddingY='3rem'>
+				<Outlet />
+			</Box>
 			<NavBar />
 		</>
 	)
