@@ -8,7 +8,7 @@ import addIcon from '../../assets/icons/add-icon.svg'
 
 const CardProduct = () => {
 	return (
-		<Card sx={{ mt: '2rem', borderRadius: '8px' }}>
+		<Card sx={{ mb: '1rem', borderRadius: '8px' }}>
 			<CardMedia
 				component='img'
 				alt='green iguana'

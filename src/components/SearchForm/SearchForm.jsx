@@ -3,10 +3,6 @@ import { Box } from '@mui/material'
 import searchIcon from '../../assets/icons/search-icon.svg'
 
 const SearchForm = () => {
-	const Form = styled('form')({
-		marginTop: '3rem',
-	})
-
 	const Input = styled('input')({
 		width: '100%',
 		padding: '1.5em',
@@ -23,16 +19,15 @@ const SearchForm = () => {
 	})
 
 	return (
-		<Form>
-			<Box
-				flexDirection
-				alignItems='center'
-				justifyContent='space-between'
-				position='relative'>
-				<Input type='text' placeholder='Buscar' />
-				<SearchIcon src={searchIcon} alt='icono de búsqueda' />
-			</Box>
-		</Form>
+		<Box
+			as='form'
+			flexDirection
+			alignItems='center'
+			justifyContent='space-between'
+			position='relative'>
+			<Input type='text' placeholder='Buscar' />
+			<SearchIcon src={searchIcon} alt='icono de búsqueda' />
+		</Box>
 	)
 }
 

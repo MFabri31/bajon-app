@@ -7,10 +7,10 @@ const ListProduct = () => {
 	return (
 		<>
 			<Box mt='3rem'>
-				<Typography>Recomendados</Typography>
+				<Typography my='1rem'>Recomendados</Typography>
 				<Grid container spacing={2}>
 					{products.map(product => (
-						<Grid item md={6}>
+						<Grid item xs={12} md={6}>
 							<ProductCard />
 						</Grid>
 					))}
