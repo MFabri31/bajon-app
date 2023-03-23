@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography'
 import { Stack } from '@mui/material'
 import addIcon from '../../assets/icons/add-icon.svg'
 
-const CardProduct = () => {
+const CardProduct = ({ name_product, description_product, price }) => {
 	return (
 		<Card sx={{ mb: '1rem', borderRadius: '8px' }}>
 			<CardMedia
@@ -17,17 +17,18 @@ const CardProduct = () => {
 			/>
 			<CardContent>
 				<Typography gutterBottom variant='h5' color='custom.dark'>
-					Plato
+					{name_product}
 				</Typography>
 				<Typography variant='body2' color='text.secondary' my={3}>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					{description_product}
 				</Typography>
 				<Stack
 					direction='row'
 					alignItems='center'
 					justifyContent='space-between'>
 					<Typography variant='h6' color='custom.purple' fontWeight='600'>
-						$25
+						${price}
 					</Typography>
 					<CardActions>
 						<CardMedia component='img' src={addIcon} />
