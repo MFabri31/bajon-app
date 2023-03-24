@@ -4,6 +4,7 @@ import HomePage from '../pages/HomePage/HomePage'
 import ProductPage from '../pages/ProductPage'
 import OrderPage from '../pages/OrderPage'
 import SignupPage from '../pages/SignupPage'
+import LoginPage from '../pages/LoginPage'
 
 const router = createBrowserRouter([
 	{
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
 	{
 		path: '/signup',
 		element: <SignupPage />,
+	},
+	{
+		path: '/login',
+		element: <LoginPage />,
 	},
 ])
 
