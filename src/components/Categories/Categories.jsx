@@ -18,6 +18,7 @@ const Categories = () => {
 				direction='row'
 				justifyContent='space-between'
 				flexWrap='wrap'
+				color='white'
 				mt='3rem'>
 				<Box onClick={getProduct}>
 					<IconCategorie src={pizzaIcon} />
