@@ -1,23 +1,24 @@
-import { Box, FormControlLabel, Radio, Button } from '@mui/material'
-import styled from '@emotion/styled'
+import { Box, FormControlLabel, Radio, Button, TextField } from '@mui/material'
 import { Link } from 'react-router-dom'
 
 const LoginForm = () => {
-	const Input = styled('input')({
-		width: '100%',
-		padding: '1.3em',
-		borderRadius: '8px',
-		background: 'white',
-		outline: '0',
-		marginBottom: '1rem',
-		border: '2px solid gray',
-		fontSize: '1rem',
-	})
-
 	return (
 		<Box as='form' bgcolor='white' padding='2em' borderRadius='8px'>
-			<Input type='text' placeholder='Usuario' />
-			<Input type='password' placeholder='Contraseña' />
+			<TextField
+				id='outlined-basic'
+				label='Usuario'
+				variant='outlined'
+				margin='normal'
+				fullWidth
+			/>
+			<TextField
+				id='outlined-password-input'
+				label='Contraseña'
+				variant='outlined'
+				margin='normal'
+				fullWidth
+				autoComplete='current-password'
+			/>
 			<FormControlLabel
 				value='a'
 				name='radio'

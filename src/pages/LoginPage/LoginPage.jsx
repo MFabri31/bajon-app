@@ -12,7 +12,7 @@ const LoginPage = () => {
 				padding: 2,
 				minHeight: '100vh',
 			}}>
-			<Typography fontSize='2rem' marginY='1rem'>
+			<Typography fontSize='2rem' marginY='1rem' color='white'>
 				Iniciar Sesión
 			</Typography>
 			<LoginForm />

@@ -12,7 +12,7 @@ const SignupPage = () => {
 				padding: 2,
 				minHeight: '100vh',
 			}}>
-			<Typography fontSize='2rem' marginY='1rem'>
+			<Typography fontSize='2rem' marginY='1rem' color='white'>
 				Crea una cuenta
 			</Typography>
 			<SignupForm />

@@ -1,25 +1,87 @@
-import { Box, Button, FormControlLabel, Link, Radio } from '@mui/material'
-import styled from '@emotion/styled'
+import { Box, Button, TextField } from '@mui/material'
+import { useState } from 'react'
+
+const INITIAL_STATE = {
+	name: '',
+	email: '',
+	password: '',
+	repassword: '',
+}
 
 const SignupForm = () => {
-	const Input = styled('input')({
-		width: '100%',
-		padding: '1.3em',
-		borderRadius: '8px',
-		background: 'white',
-		outline: '0',
-		marginBottom: '1rem',
-		border: '2px solid gray',
-		fontSize: '1rem',
-	})
+	const [form, setForm] = useState(INITIAL_STATE)
+
+	const { name, email, password, repassword } = form
+
+	const handleChange = evt => {
+		setForm({
+			...form,
+			[evt.target.name]: evt.target.value,
+		})
+	}
+
+	const handleSubmit = evt => {
+		evt.preventDefault()
+		alert('crea usuario', name, email, password)
+	}
 
 	return (
-		<Box as='form' bgcolor='white' padding='2em' borderRadius='8px'>
-			<Input type='text' placeholder='Usuario' />
-			<Input type='password' placeholder='Contraseña' />
-			<Input type='password' placeholder='Confirmar contraseña' />
+		<Box
+			as='form'
+			bgcolor='white'
+			color='red'
+			padding='2em'
+			borderRadius='8px'
+			onSubmit={handleSubmit}>
+			<TextField
+				id='outlined-basic'
+				label='Usuario'
+				variant='outlined'
+				margin='normal'
+				fullWidth
+				name='name'
+				value={name}
+				onChange={handleChange}
+			/>
+			<TextField
+				id='outlined-basic'
+				label='Email'
+				variant='outlined'
+				margin='normal'
+				fullWidth
+				type='email'
+				name='email'
+				value={email}
+				onChange={handleChange}
+			/>
+			<TextField
+				id='outlined-password-input'
+				label='Contraseña'
+				variant='outlined'
+				margin='normal'
+				fullWidth
+				autoComplete='current-password'
+				type='password'
+				name='password'
+				value={password}
+				onChange={handleChange}
+			/>
+			<TextField
+				id='outlined-password-input'
+				label='Confirmar Contraseña'
+				variant='outlined'
+				margin='normal'
+				fullWidth
+				autoComplete='current-password'
+				type='password'
+				name='repassword'
+				value={repassword}
+				onChange={handleChange}
+			/>
+
 			<Button
 				variant='contained'
+				type='submit'
 				sx={theme => ({
 					background: theme.palette.custom.blue,
 					'&:hover': { background: theme.palette.custom.blue },

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { Box } from '@mui/material'
+import { Box, TextField } from '@mui/material'
 import searchIcon from '../../assets/icons/search-icon.svg'
 
 const SearchForm = () => {
@@ -25,7 +25,12 @@ const SearchForm = () => {
 			alignItems='center'
 			justifyContent='space-between'
 			position='relative'>
-			<Input type='text' placeholder='Buscar' />
+			<TextField
+				variant='filled'
+				label='Buscar'
+				fullWidth
+				sx={{ background: 'white' }}
+			/>
 			<SearchIcon src={searchIcon} alt='icono de búsqueda' />
 		</Box>
 	)
