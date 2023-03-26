@@ -1,5 +1,6 @@
-import { Box, Button, TextField } from '@mui/material'
+import { Box, Button, TextField, Typography } from '@mui/material'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const INITIAL_STATE = {
 	name: '',
@@ -29,7 +30,6 @@ const SignupForm = () => {
 		<Box
 			as='form'
 			bgcolor='white'
-			color='red'
 			padding='2em'
 			borderRadius='8px'
 			onSubmit={handleSubmit}>
@@ -91,6 +91,12 @@ const SignupForm = () => {
 				})}>
 				Registrarte
 			</Button>
+			<Box textAlign='center'>
+				<Typography as='span' mr='0.5rem'>
+					¿Tienes una cuenta?
+				</Typography>
+				<Link to='/login'>Inicia sesión</Link>
+			</Box>
 		</Box>
 	)
 }

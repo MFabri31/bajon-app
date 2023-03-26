@@ -1,4 +1,11 @@
-import { Box, FormControlLabel, Radio, Button, TextField } from '@mui/material'
+import {
+	Box,
+	FormControlLabel,
+	Radio,
+	Button,
+	TextField,
+	Typography,
+} from '@mui/material'
 import { Link } from 'react-router-dom'
 
 const LoginForm = () => {
@@ -44,6 +51,13 @@ const LoginForm = () => {
 				})}>
 				Iniciar Sesión
 			</Button>
+
+			<Box textAlign='center'>
+				<Typography as='span' mr='0.5rem'>
+					¿No tienes una cuenta?
+				</Typography>
+				<Link to='/signup'>Regístrate</Link>
+			</Box>
 		</Box>
 	)
 }

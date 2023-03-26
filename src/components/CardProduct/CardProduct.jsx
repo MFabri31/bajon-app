@@ -5,16 +5,19 @@ import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
 import { Stack } from '@mui/material'
 import addIcon from '../../assets/icons/add-icon.svg'
+import { Link } from 'react-router-dom'
 
 const CardProduct = ({ name_product, description_product, price }) => {
 	return (
 		<Card sx={{ mb: '1rem', borderRadius: '8px' }}>
-			<CardMedia
-				component='img'
-				alt='green iguana'
-				height='240'
-				image='https://images.unsplash.com/photo-1513185158878-8d8c2a2a3da3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE2fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60'
-			/>
+			<Link to='/producto'>
+				<CardMedia
+					component='img'
+					alt='green iguana'
+					height='240'
+					image='https://images.unsplash.com/photo-1513185158878-8d8c2a2a3da3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE2fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60'
+				/>
+			</Link>
 			<CardContent>
 				<Typography gutterBottom variant='h5' color='custom.dark'>
 					{name_product}

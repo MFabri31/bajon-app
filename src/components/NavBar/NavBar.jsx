@@ -3,6 +3,7 @@ import HomeIcon from '../../assets/icons/home-icon.svg'
 import ShoppingCartIcon from '../../assets/icons/shoppingCart-icon.svg'
 import NotificationIcon from '../../assets/icons/notification-icon.svg'
 import ProfileIcon from '../../assets/icons/profile-icon.svg'
+import { Link } from 'react-router-dom'
 
 const NavBar = () => {
 	return (
@@ -20,16 +21,22 @@ const NavBar = () => {
 					}}>
 					<Toolbar sx={{ display: 'flex', justifyContent: 'space-around' }}>
 						<IconButton>
-							<img src={HomeIcon} />
+							<Link to='/'>
+								<img src={HomeIcon} />
+							</Link>
 						</IconButton>
 						<IconButton>
-							<img src={ShoppingCartIcon} />
+							<Link to='/orden'>
+								<img src={ShoppingCartIcon} />
+							</Link>
 						</IconButton>
 						<IconButton>
 							<img src={NotificationIcon} />
 						</IconButton>
 						<IconButton>
-							<img src={ProfileIcon} />
+							<Link to='/login'>
+								<img src={ProfileIcon} />
+							</Link>
 						</IconButton>
 					</Toolbar>
 				</AppBar>
