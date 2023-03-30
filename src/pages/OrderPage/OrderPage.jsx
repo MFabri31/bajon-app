@@ -11,9 +11,10 @@ import {
 import plusIcon from '../../assets/icons/plus-icon.svg'
 import minusIcon from '../../assets/icons/minus-icon.svg'
 import { useAppContext } from '../../context/AppContext'
+import IconTrash from '../../assets/icons/icon-trash.svg'
 
 const OrderPage = () => {
-	const { cart } = useAppContext()
+	const { cart, removeProductToCart } = useAppContext()
 
 	return (
 		<>
@@ -31,7 +32,7 @@ const OrderPage = () => {
 					sx={{
 						display: 'flex',
 						justifyContent: 'space-around',
-						padding: '0.5em',
+						paddingY: '1em',
 						marginBottom: '3rem',
 						borderRadius: '8px',
 					}}>
@@ -70,6 +71,12 @@ const OrderPage = () => {
 								</Stack>
 							</CardActions>
 						</CardContent>
+						<img
+							src={IconTrash}
+							alt='icon trash'
+							style={{ width: '1.5rem', position: 'relative', left: '4rem' }}
+							onClick={() => removeProductToCart(product.id)}
+						/>
 					</Box>
 				</Card>
 			))}

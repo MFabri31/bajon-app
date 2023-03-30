@@ -25,6 +25,11 @@ export const AppProvider = ({ children }) => {
 		setCart([...cart, product])
 	}
 
+	const removeProductToCart = id => {
+		const cartUpdate = cart.filter(product => product.id !== id)
+		setCart(cartUpdate)
+	}
+
 	useEffect(() => {
 		getData()
 	}, [])
@@ -37,6 +42,7 @@ export const AppProvider = ({ children }) => {
 				error,
 				cart,
 				addToCart,
+				removeProductToCart,
 			}}>
 			{children}
 		</Provider>
