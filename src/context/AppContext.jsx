@@ -30,6 +30,10 @@ export const AppProvider = ({ children }) => {
 		setCart(cartUpdate)
 	}
 
+	const clearCart = () => {
+		setCart([])
+	}
+
 	useEffect(() => {
 		getData()
 	}, [])
@@ -43,6 +47,7 @@ export const AppProvider = ({ children }) => {
 				cart,
 				addToCart,
 				removeProductToCart,
+				clearCart,
 			}}>
 			{children}
 		</Provider>

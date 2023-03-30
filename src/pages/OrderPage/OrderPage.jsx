@@ -14,7 +14,7 @@ import { useAppContext } from '../../context/AppContext'
 import IconTrash from '../../assets/icons/icon-trash.svg'
 
 const OrderPage = () => {
-	const { cart, removeProductToCart } = useAppContext()
+	const { cart, removeProductToCart, clearCart } = useAppContext()
 
 	return (
 		<>
@@ -26,6 +26,13 @@ const OrderPage = () => {
 					Mesa:
 				</Typography>
 			</Box>
+
+			<Button
+				variant='contained'
+				sx={{ background: 'gray', marginY: '1rem' }}
+				onClick={clearCart}>
+				Vaciar carrito
+			</Button>
 
 			{cart.map(product => (
 				<Card
