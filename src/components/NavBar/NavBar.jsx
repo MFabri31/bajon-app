@@ -1,11 +1,14 @@
-import { AppBar, Box, Container, IconButton, Toolbar } from '@mui/material'
+import { AppBar, Box, IconButton, Toolbar, Typography } from '@mui/material'
 import HomeIcon from '../../assets/icons/home-icon.svg'
 import ShoppingCartIcon from '../../assets/icons/shoppingCart-icon.svg'
 import NotificationIcon from '../../assets/icons/notification-icon.svg'
 import ProfileIcon from '../../assets/icons/profile-icon.svg'
 import { Link } from 'react-router-dom'
+import { useAppContext } from '../../context/AppContext'
 
 const NavBar = () => {
+	const { cart } = useAppContext()
+
 	return (
 		<>
 			<Box padding='1rem 0'>
@@ -29,6 +32,9 @@ const NavBar = () => {
 							<Link to='/orden'>
 								<img src={ShoppingCartIcon} />
 							</Link>
+							<Typography color='white' ml='1em'>
+								{cart.length}
+							</Typography>
 						</IconButton>
 						<IconButton>
 							<img src={NotificationIcon} />

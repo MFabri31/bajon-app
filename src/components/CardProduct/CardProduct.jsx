@@ -6,8 +6,13 @@ import Typography from '@mui/material/Typography'
 import { Stack } from '@mui/material'
 import addIcon from '../../assets/icons/add-icon.svg'
 import { Link } from 'react-router-dom'
+import { useAppContext } from '../../context/AppContext'
 
-const CardProduct = ({ name_product, description_product, price }) => {
+const CardProduct = ({ product }) => {
+	const { name_product, description_product, price } = product
+
+	const { addToCart } = useAppContext()
+
 	return (
 		<Card sx={{ mb: '1rem', borderRadius: '8px' }}>
 			<Link to='/producto'>
@@ -34,7 +39,11 @@ const CardProduct = ({ name_product, description_product, price }) => {
 						${price}
 					</Typography>
 					<CardActions>
-						<CardMedia component='img' src={addIcon} />
+						<CardMedia
+							component='img'
+							src={addIcon}
+							onClick={() => addToCart(product)}
+						/>
 					</CardActions>
 				</Stack>
 			</CardContent>

@@ -1,5 +1,5 @@
 import { Box, Grid, Typography } from '@mui/material'
-import ProductCard from '../CardProduct'
+import CardProduct from '../CardProduct'
 
 const ListProduct = ({ products }) => {
 	return (
@@ -9,7 +9,7 @@ const ListProduct = ({ products }) => {
 				<Grid container spacing={2}>
 					{products?.map(product => (
 						<Grid item xs={12} md={6}>
-							<ProductCard key={product.id} {...product} />
+							<CardProduct key={product.id} product={product} />
 						</Grid>
 					))}
 				</Grid>

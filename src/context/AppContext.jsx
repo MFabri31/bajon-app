@@ -9,6 +9,7 @@ export const AppProvider = ({ children }) => {
 	const [data, setData] = useState([])
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState(false)
+	const [cart, setCart] = useState([])
 
 	const getData = async () => {
 		try {
@@ -20,11 +21,26 @@ export const AppProvider = ({ children }) => {
 		setLoading(false)
 	}
 
+	const addToCart = product => {
+		setCart([...cart, product])
+	}
+
 	useEffect(() => {
 		getData()
 	}, [])
 
-	return <Provider value={{ data, loading, error }}>{children}</Provider>
+	return (
+		<Provider
+			value={{
+				data,
+				loading,
+				error,
+				cart,
+				addToCart,
+			}}>
+			{children}
+		</Provider>
+	)
 }
 
 export const useAppContext = () => {
