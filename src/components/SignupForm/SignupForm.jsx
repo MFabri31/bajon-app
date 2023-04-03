@@ -1,6 +1,7 @@
 import { Box, Button, TextField, Typography } from '@mui/material'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { APIInstance } from '../../config/axios'
 
 const INITIAL_STATE = {
 	name: '',
@@ -11,8 +12,12 @@ const INITIAL_STATE = {
 
 const SignupForm = () => {
 	const [form, setForm] = useState(INITIAL_STATE)
+	const [errorMessage, setErrorMessage] = useState('')
+	const [succesMessage, setSuccesMessage] = useState('')
 
 	const { name, email, password, repassword } = form
+
+	const navigate = useNavigate()
 
 	const handleChange = evt => {
 		setForm({
@@ -21,9 +26,52 @@ const SignupForm = () => {
 		})
 	}
 
-	const handleSubmit = evt => {
-		evt.preventDefault()
-		alert('crea usuario', name, email, password)
+	const handleSubmit = async e => {
+		e.preventDefault()
+		console.log(form)
+		if (name === '' || email === '' || password === '' || repassword === '') {
+			setErrorMessage('Por favor complete todos los campos')
+			console.log('Por favor complete todos los campos')
+			setTimeout(() => {
+				setErrorMessage('')
+			}, 3000)
+		} else if (password !== repassword) {
+			setErrorMessage('Las contraseñas no coinciden')
+			console.log('Las contraseñas no coinciden')
+			setTimeout(() => {
+				setErrorMessage('')
+			}, 3000)
+		} else if (
+			name !== '' ||
+			email !== '' ||
+			password !== '' ||
+			repassword !== ''
+		) {
+			const User = {
+				name,
+				email,
+				password,
+			}
+			await APIInstance.post('/users', User)
+				.then(res => {
+					const { data } = res
+					console.log(res.data)
+					setSuccesMessage('Usuario creado correctamente!')
+					console.log('Usuario creado!')
+					setTimeout(() => {
+						setSuccesMessage('')
+						navigate('/login')
+					}, 3000)
+				})
+				.catch(error => {
+					setErrorMessage('Error!')
+					console.log()
+					setTimeout(() => {
+						setErrorMessage('')
+					}, 3000)
+					console.error(error)
+				})
+		}
 	}
 
 	return (
@@ -97,6 +145,29 @@ const SignupForm = () => {
 				</Typography>
 				<Link to='/login'>Inicia sesión</Link>
 			</Box>
+			{errorMessage && (
+				<Box
+					bgcolor='red'
+					sx={{ color: 'white' }}
+					padding='1em'
+					marginY='1rem'
+					borderRadius='8px'
+					textAlign='center'>
+					{errorMessage}
+				</Box>
+			)}
+
+			{succesMessage && (
+				<Box
+					bgcolor='green'
+					sx={{ color: 'white' }}
+					padding='1em'
+					marginY='1rem'
+					borderRadius='8px'
+					textAlign='center'>
+					{succesMessage}
+				</Box>
+			)}
 		</Box>
 	)
 }

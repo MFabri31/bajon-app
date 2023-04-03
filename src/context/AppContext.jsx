@@ -10,6 +10,7 @@ export const AppProvider = ({ children }) => {
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState(false)
 	const [cart, setCart] = useState([])
+	const [token, setToken] = useState('')
 
 	const getData = async () => {
 		try {
@@ -48,6 +49,8 @@ export const AppProvider = ({ children }) => {
 				addToCart,
 				removeProductToCart,
 				clearCart,
+				token,
+				setToken,
 			}}>
 			{children}
 		</Provider>

@@ -1,8 +1,21 @@
 import { Box, Typography } from '@mui/material'
+import { useEffect } from 'react'
 import SignupForm from '../../components/SignupForm'
+import { useAppContext } from '../../context/AppContext'
 
 const SignupPage = () => {
-	return (
+	const { token, setToken } = useAppContext()
+
+	useEffect(
+		token => {
+			setToken(localStorage.getItem('token'))
+		},
+		[token]
+	)
+
+	return token ? (
+		<div>Profile component</div>
+	) : (
 		<Box
 			sx={{
 				display: 'flex',
