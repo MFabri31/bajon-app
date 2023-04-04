@@ -1,22 +1,87 @@
+import { useState } from 'react'
 import {
 	Box,
-	FormControlLabel,
-	Radio,
-	Button,
 	TextField,
+	FormControlLabel,
+	Button,
 	Typography,
+	Radio,
 } from '@mui/material'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { APIInstance } from '../../config/axios'
+
+const INITIAL_STATE = {
+	email: '',
+	password: '',
+}
 
 const LoginForm = () => {
+	const [form, setForm] = useState(INITIAL_STATE)
+	const [errorMessage, setErrorMessage] = useState('')
+	const [successMessage, setSuccessMessage] = useState('')
+
+	const { email, password } = form
+
+	const navigate = useNavigate()
+
+	const handleChange = evt => {
+		setForm({ ...form, [evt.target.name]: evt.target.value })
+	}
+
+	const handleSubmit = async evt => {
+		evt.preventDefault()
+
+		if (email === '' || password === '') {
+			setErrorMessage('Por favor complete todos los campos')
+			console.log('Por favor complete todos los campos')
+			setTimeout(() => {
+				setErrorMessage('')
+			}, 3000)
+		} else if (email !== '' || password !== '') {
+			const User = {
+				email,
+				password,
+			}
+			await APIInstance.post('/login', User)
+				.then(res => {
+					localStorage.setItem('token', res.data?.user.token)
+					console.log(res.data)
+					setSuccessMessage('Sesion iniciada correctamente!')
+					console.log(
+						`Sesion iniciada correctamente! Bienvenido ${res.data.user.name}`
+					)
+					setTimeout(() => {
+						setSuccessMessage('')
+						navigate('/')
+					}, 3000)
+				})
+				.catch(error => {
+					setErrorMessage('Correo u contraseña incorrecta')
+					console.log('Correo u contraseña incorrecta')
+					setTimeout(() => {
+						setErrorMessage('')
+					}, 3000)
+					console.error(error)
+				})
+		}
+	}
+
 	return (
-		<Box as='form' bgcolor='white' padding='2em' borderRadius='8px'>
+		<Box
+			onSubmit={handleSubmit}
+			as='form'
+			bgcolor='white'
+			padding='2em'
+			borderRadius='8px'>
 			<TextField
 				id='outlined-basic'
-				label='Usuario'
+				label='Email'
 				variant='outlined'
 				margin='normal'
 				fullWidth
+				value={email}
+				name='email'
+				onChange={handleChange}
 			/>
 			<TextField
 				id='outlined-password-input'
@@ -25,6 +90,9 @@ const LoginForm = () => {
 				margin='normal'
 				fullWidth
 				autoComplete='current-password'
+				name='password'
+				value={password}
+				onChange={handleChange}
 			/>
 			<FormControlLabel
 				value='a'
@@ -41,6 +109,7 @@ const LoginForm = () => {
 				Recuperar contraseña
 			</Link>
 			<Button
+				type='submit'
 				variant='contained'
 				sx={theme => ({
 					background: theme.palette.custom.blue,
@@ -58,6 +127,29 @@ const LoginForm = () => {
 				</Typography>
 				<Link to='/signup'>Regístrate</Link>
 			</Box>
+			{errorMessage && (
+				<Box
+					bgcolor='red'
+					sx={{ color: 'white' }}
+					padding='1em'
+					marginTop='1rem'
+					borderRadius='8px'
+					textAlign='center'>
+					{errorMessage}
+				</Box>
+			)}
+
+			{successMessage && (
+				<Box
+					bgcolor='green'
+					sx={{ color: 'white' }}
+					padding='1em'
+					marginTop='1rem'
+					borderRadius='8px'
+					textAlign='center'>
+					{successMessage}
+				</Box>
+			)}
 		</Box>
 	)
 }
