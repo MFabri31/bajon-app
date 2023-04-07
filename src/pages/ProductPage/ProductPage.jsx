@@ -1,24 +1,51 @@
-import Card from '@mui/material/Card'
-import CardActions from '@mui/material/CardActions'
-import CardContent from '@mui/material/CardContent'
-import CardMedia from '@mui/material/CardMedia'
-import Typography from '@mui/material/Typography'
-import { Stack } from '@mui/material'
+import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import { APIInstance } from '../../config/axios'
+import {
+	Card,
+	CardActions,
+	CardContent,
+	CardMedia,
+	Stack,
+	Typography,
+} from '@mui/material'
 import addIcon from '../../assets/icons/plus-icon.svg'
 import plusIcon from '../../assets/icons/plus-icon.svg'
 import minusIcon from '../../assets/icons/minus-icon.svg'
 
 const ProductPage = () => {
+	const [product, setProduct] = useState({})
+
+	const { id } = useParams()
+
+	const getProductById = async () => {
+		try {
+			const response = await APIInstance.get('/products', id)
+			const product = response.data.find(product => product._id === id)
+			setProduct(product)
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
+	useEffect(() => {
+		getProductById()
+	}, [])
+
 	return (
 		<Card sx={{ mt: '2rem', borderRadius: '8px' }}>
+			<CardMedia
+				component='img'
+				alt={product.name_product}
+				height='240'
+				image={product.imgUrl}
+			/>
 			<CardContent>
 				<Typography gutterBottom variant='h5' color='custom.dark'>
-					Plato
+					{product.name_product}
 				</Typography>
 				<Typography variant='body2' color='text.secondary' my={3}>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum
-					dolor sit amet consectetur adipisicing elit. Corrupti, aperiam magni
-					eius voluptatum facilis corporis.
+					{product.description_product}
 				</Typography>
 				<Typography
 					color='custom.dark'
@@ -32,7 +59,7 @@ const ProductPage = () => {
 					alignItems='center'
 					justifyContent='space-between'>
 					<Typography variant='h6' color='custom.purple' fontWeight='600'>
-						$25
+						${product.price}
 					</Typography>
 					<CardActions>
 						<Stack direction='row' justifyContent='space-between'>

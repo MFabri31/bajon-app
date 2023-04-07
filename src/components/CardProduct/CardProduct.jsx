@@ -1,26 +1,28 @@
-import Card from '@mui/material/Card'
-import CardActions from '@mui/material/CardActions'
-import CardContent from '@mui/material/CardContent'
-import CardMedia from '@mui/material/CardMedia'
-import Typography from '@mui/material/Typography'
-import { Stack } from '@mui/material'
-import addIcon from '../../assets/icons/add-icon.svg'
-import { Link } from 'react-router-dom'
 import { useAppContext } from '../../context/AppContext'
+import { Link } from 'react-router-dom'
+import {
+	Stack,
+	Card,
+	CardActions,
+	CardContent,
+	CardMedia,
+	Typography,
+} from '@mui/material'
+import addIcon from '../../assets/icons/add-icon.svg'
 
 const CardProduct = ({ product }) => {
-	const { name_product, description_product, price } = product
+	const { name_product, description_product, price, _id, imgUrl } = product
 
 	const { addToCart } = useAppContext()
 
 	return (
 		<Card sx={{ mb: '1rem', borderRadius: '8px' }}>
-			<Link to='/producto'>
+			<Link to={`/producto/${_id}`}>
 				<CardMedia
 					component='img'
-					alt='green iguana'
+					alt={name_product}
 					height='240'
-					image='https://images.unsplash.com/photo-1513185158878-8d8c2a2a3da3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE2fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60'
+					image={imgUrl}
 				/>
 			</Link>
 			<CardContent>
@@ -28,7 +30,6 @@ const CardProduct = ({ product }) => {
 					{name_product}
 				</Typography>
 				<Typography variant='body2' color='text.secondary' my={3}>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit.
 					{description_product}
 				</Typography>
 				<Stack
