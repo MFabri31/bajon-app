@@ -11,6 +11,7 @@ export const AppProvider = ({ children }) => {
 	const [error, setError] = useState(false)
 	const [cart, setCart] = useState([])
 	const [token, setToken] = useState()
+	const [term, setTerm] = useState('')
 
 	const getData = async () => {
 		try {
@@ -35,6 +36,12 @@ export const AppProvider = ({ children }) => {
 		setCart([])
 	}
 
+	const handleSearchValue = evt => {
+		setTerm(evt.target.value)
+	}
+
+	const handleGetProduct = evt => setTerm(evt.currentTarget.textContent)
+
 	useEffect(() => {
 		getData()
 	}, [])
@@ -51,6 +58,9 @@ export const AppProvider = ({ children }) => {
 				clearCart,
 				token,
 				setToken,
+				term,
+				handleGetProduct,
+				handleSearchValue,
 			}}>
 			{children}
 		</Provider>

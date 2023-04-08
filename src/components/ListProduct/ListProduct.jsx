@@ -8,9 +8,15 @@ const ListProduct = ({ products, term }) => {
 		</Grid>
 	))
 
-	const filteredProducts = products.filter(product =>
-		product.name_product.toLowerCase().includes(term.toLowerCase())
-	)
+	const filteredProducts = products.filter(product => {
+		if (product.name_product.toLowerCase().includes(term.toLowerCase())) {
+			return product
+		}
+
+		if (product.category.toLowerCase().includes(term.toLowerCase())) {
+			return product
+		}
+	})
 
 	return (
 		<>

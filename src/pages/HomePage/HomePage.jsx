@@ -1,16 +1,9 @@
-import { useState } from 'react'
 import ListProduct from '../../components/ListProduct'
 import SearchForm from '../../components/SearchForm'
 import { useAppContext } from '../../context/AppContext'
 
 const HomePage = () => {
-	const [term, setTerm] = useState('')
-
-	const { data, loading, error } = useAppContext()
-
-	const handleSearchValue = evt => {
-		setTerm(evt.target.value)
-	}
+	const { data, loading, error, term, handleSearchValue } = useAppContext()
 
 	if (error) return <h3>Se ha producido un error!</h3>
 
