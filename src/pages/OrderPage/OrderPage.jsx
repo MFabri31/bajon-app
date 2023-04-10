@@ -103,6 +103,9 @@ const OrderPage = () => {
 						$
 					</Typography>
 				</Typography>
+				<Button variant='contained' onClick={clearCart}>
+					Confirmar
+				</Button>
 			</Stack>
 		</>
 	)
