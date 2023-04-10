@@ -17,10 +17,7 @@ const NavBar = () => {
 					sx={{
 						top: 'auto',
 						bottom: 0,
-						left: 'auto',
-						right: 'auto',
 						backgroundColor: 'custom.dark',
-						maxWidth: '35rem',
 					}}>
 					<Toolbar sx={{ display: 'flex', justifyContent: 'space-around' }}>
 						<IconButton>

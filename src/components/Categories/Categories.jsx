@@ -19,7 +19,7 @@ const Categories = () => {
 				justifyContent='space-between'
 				flexWrap='wrap'
 				color='white'
-				mt='3rem'>
+				mt='6rem'>
 				<Box onClick={handleGetProduct}>
 					<IconCategorie src={pizzaIcon} />
 					<Typography>Pizzas</Typography>

@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom'
 const Header = () => {
 	return (
 		<>
-			<AppBar position='static' sx={{ backgroundColor: 'custom.dark' }}>
+			<AppBar
+				position='fixed'
+				sx={{ backgroundColor: 'custom.dark', top: '0', left: '0', zIndex: 2 }}>
 				<Toolbar>
 					<Link
 						to='/'
