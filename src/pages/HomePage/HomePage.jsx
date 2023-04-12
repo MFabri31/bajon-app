@@ -1,3 +1,4 @@
+import Categories from '../../components/Categories/Categories'
 import ListProduct from '../../components/ListProduct'
 import SearchForm from '../../components/SearchForm'
 import { useAppContext } from '../../context/AppContext'
@@ -11,6 +12,7 @@ const HomePage = () => {
 
 	return (
 		<>
+			<Categories />
 			<SearchForm handleSearchValue={handleSearchValue} />
 			<ListProduct products={data} term={term} />
 		</>

@@ -18,7 +18,7 @@ const OrderPage = () => {
 
 	return (
 		<>
-			<Box mb='1rem' color='white'>
+			<Box my='3rem' color='white'>
 				<Typography fontWeight='600' fontSize='1.5rem'>
 					Nombre de usuario:
 				</Typography>
